@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>California Australia Time Converter</title>
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@500,600,700&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem;
+      --color-bg: #f7f6f2; --color-surface: #f9f8f5; --color-surface-2: #fbfbf9; --color-surface-offset: #f3f0ec; --color-surface-offset-2: #edeae5; --color-surface-dynamic: #e6e4df; --color-divider: #dcd9d5; --color-border: #d4d1ca;
+      --color-text: #28251d; --color-text-muted: #6b6860; --color-text-faint: #97958f; --color-text-inverse: #f9f8f4;
+      --color-primary: #01696f; --color-primary-hover: #0c4e54; --color-primary-active: #0f3638; --color-primary-highlight: #cedcd8;
+      --color-success: #437a22; --color-blue: #006494; --color-purple: #7a39bb;
+      --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.75rem; --radius-xl: 1rem; --radius-full: 9999px;
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 2px oklch(0.2 0.01 80 / 0.06); --shadow-md: 0 4px 12px oklch(0.2 0.01 80 / 0.08); --shadow-lg: 0 12px 32px oklch(0.2 0.01 80 / 0.12);
+      --content-wide: 1180px;
+      --font-display: 'General Sans', 'Inter', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+    }
+    [data-theme="dark"] {
+      --color-bg: #171614; --color-surface: #1c1b19; --color-surface-2: #201f1d; --color-surface-offset: #1d1c1a; --color-surface-offset-2: #22211f; --color-surface-dynamic: #2d2c2a; --color-divider: #262523; --color-border: #393836;
+      --color-text: #e0ddd7; --color-text-muted: #a4a09a; --color-text-faint: #716d68; --color-text-inverse: #2b2a28;
+      --color-primary: #4f98a3; --color-primary-hover: #227f8b; --color-primary-active: #1a626b; --color-primary-highlight: #313b3b;
+      --color-success: #6daa45; --color-blue: #5591c7; --color-purple: #a86fdf;
+      --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.2); --shadow-md: 0 4px 12px oklch(0 0 0 / 0.3); --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.4);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --color-bg: #171614; --color-surface: #1c1b19; --color-surface-2: #201f1d; --color-surface-offset: #1d1c1a; --color-surface-offset-2: #22211f; --color-surface-dynamic: #2d2c2a; --color-divider: #262523; --color-border: #393836;
+        --color-text: #e0ddd7; --color-text-muted: #a4a09a; --color-text-faint: #716d68; --color-text-inverse: #2b2a28;
+        --color-primary: #4f98a3; --color-primary-hover: #227f8b; --color-primary-active: #1a626b; --color-primary-highlight: #313b3b;
+        --color-success: #6daa45; --color-blue: #5591c7; --color-purple: #a86fdf;
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: none; text-size-adjust: none; scroll-behavior: smooth; }
+    body {
+      min-height: 100dvh; line-height: 1.55; font-family: var(--font-body); font-size: var(--text-base);
+      color: var(--color-text); background:
+      radial-gradient(circle at top left, color-mix(in oklab, var(--color-primary) 12%, transparent), transparent 28%),
+      radial-gradient(circle at bottom right, color-mix(in oklab, var(--color-blue) 8%, transparent), transparent 32%),
+      var(--color-bg);
+    }
+    img, svg { display: block; max-width: 100%; }
+    button, input, select { font: inherit; color: inherit; }
+    a, button, input, select { transition: color var(--transition-interactive), background var(--transition-interactive), border-color var(--transition-interactive), box-shadow var(--transition-interactive), transform var(--transition-interactive); }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+
+    .skip-link { position: absolute; left: var(--space-4); top: -3rem; padding: var(--space-3) var(--space-4); background: var(--color-surface); color: var(--color-text); border-radius: var(--radius-md); box-shadow: var(--shadow-md); z-index: 20; }
+    .skip-link:focus { top: var(--space-4); }
+    .shell { max-width: var(--content-wide); margin: 0 auto; padding: var(--space-4); }
+    .header {
+      display: flex; justify-content: space-between; align-items: center; gap: var(--space-4);
+      padding: var(--space-4) 0 var(--space-8); position: sticky; top: 0; backdrop-filter: blur(14px); z-index: 10;
+      background: linear-gradient(to bottom, color-mix(in oklab, var(--color-bg) 88%, transparent), color-mix(in oklab, var(--color-bg) 65%, transparent));
+    }
+    .brand { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: inherit; min-height: 44px; }
+    .brand-mark {
+      width: 2.6rem; height: 2.6rem; padding: 0.5rem; border-radius: 0.8rem; color: var(--color-primary);
+      background: color-mix(in oklab, var(--color-primary) 10%, var(--color-surface)); border: 1px solid color-mix(in oklab, var(--color-primary) 18%, var(--color-border));
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-text strong { display: block; font-family: var(--font-display); font-size: var(--text-sm); letter-spacing: 0.02em; }
+    .brand-text span { display: block; color: var(--color-text-muted); font-size: var(--text-xs); }
+    .theme-toggle {
+      min-width: 44px; min-height: 44px; display: grid; place-items: center; border-radius: var(--radius-full);
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent); background: color-mix(in oklab, var(--color-surface) 88%, transparent);
+      box-shadow: var(--shadow-sm); cursor: pointer;
+    }
+    .theme-toggle:hover { transform: translateY(-1px); }
+
+    main { display: grid; gap: var(--space-8); padding-bottom: var(--space-16); }
+    .hero, .converter, .guide { background: color-mix(in oklab, var(--color-surface) 92%, transparent); border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent); box-shadow: var(--shadow-md); }
+    .hero {
+      border-radius: calc(var(--radius-xl) + 0.25rem); padding: clamp(var(--space-6), 4vw, var(--space-12));
+      display: grid; grid-template-columns: 1.2fr 0.9fr; gap: var(--space-8); align-items: start;
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); border-radius: var(--radius-full); background: color-mix(in oklab, var(--color-primary) 12%, var(--color-surface)); color: var(--color-primary); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; }
+    h1 { font-family: var(--font-display); font-size: var(--text-xl); line-height: 1.02; letter-spacing: -0.03em; max-width: 14ch; margin-top: var(--space-5); }
+    .hero p { margin-top: var(--space-4); color: var(--color-text-muted); max-width: 58ch; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+    .pill { padding: var(--space-2) var(--space-3); border-radius: var(--radius-full); background: var(--color-surface-offset); color: var(--color-text); font-size: var(--text-sm); border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent); }
+
+    .hero-clock {
+      padding: var(--space-5); border-radius: var(--radius-xl); background:
+      linear-gradient(180deg, color-mix(in oklab, var(--color-surface-2) 92%, transparent), color-mix(in oklab, var(--color-surface-offset) 92%, transparent));
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      display: grid; gap: var(--space-4);
+    }
+    .clock-card { padding: var(--space-4); border-radius: var(--radius-lg); background: color-mix(in oklab, var(--color-bg) 78%, var(--color-surface)); border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent); }
+    .clock-card small { color: var(--color-text-muted); display: block; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; }
+    .clock-time { font-family: var(--font-display); font-size: clamp(1.65rem, 1.25rem + 1.8vw, 2.4rem); line-height: 1.05; margin-top: var(--space-2); font-variant-numeric: tabular-nums lining-nums; }
+    .clock-date { color: var(--color-text-muted); margin-top: var(--space-1); font-size: var(--text-sm); }
+
+    .converter {
+      border-radius: calc(var(--radius-xl) + 0.25rem); padding: clamp(var(--space-6), 4vw, var(--space-10));
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-8);
+    }
+    .panel-title { font-family: var(--font-display); font-size: var(--text-lg); letter-spacing: -0.02em; }
+    .panel-intro { color: var(--color-text-muted); margin-top: var(--space-3); max-width: 56ch; }
+    .form-grid { display: grid; gap: var(--space-4); margin-top: var(--space-6); }
+    .field { display: grid; gap: var(--space-2); }
+    .field label { font-size: var(--text-sm); font-weight: 600; }
+    .control {
+      min-height: 48px; width: 100%; border-radius: var(--radius-lg); border: 1px solid color-mix(in oklab, var(--color-text) 14%, transparent);
+      background: color-mix(in oklab, var(--color-bg) 80%, var(--color-surface)); padding: 0 var(--space-4);
+      box-shadow: inset 0 1px 0 color-mix(in oklab, white 60%, transparent);
+    }
+    .control:focus { border-color: var(--color-primary); }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+    .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
+    .btn {
+      min-height: 46px; padding: 0 var(--space-5); border-radius: var(--radius-full); border: 1px solid transparent; cursor: pointer;
+      font-size: var(--text-sm); font-weight: 700;
+    }
+    .btn-primary { background: var(--color-primary); color: var(--color-text-inverse); box-shadow: var(--shadow-sm); }
+    .btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
+    .btn-secondary { background: var(--color-surface-offset); color: var(--color-text); border-color: color-mix(in oklab, var(--color-text) 10%, transparent); }
+    .btn-secondary:hover { background: var(--color-surface-offset-2); }
+
+    .results { display: grid; gap: var(--space-4); align-content: start; }
+    .result-card {
+      border-radius: var(--radius-xl); padding: var(--space-5); background: linear-gradient(180deg, color-mix(in oklab, var(--color-surface-2) 92%, transparent), color-mix(in oklab, var(--color-surface-offset) 92%, transparent));
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      min-height: 11rem;
+    }
+    .result-card small { display: block; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: var(--text-xs); }
+    .result-primary { font-family: var(--font-display); font-size: clamp(1.45rem, 1.05rem + 1.5vw, 2.05rem); line-height: 1.08; margin-top: var(--space-3); }
+    .result-secondary { color: var(--color-text-muted); margin-top: var(--space-2); }
+    .summary-box {
+      padding: var(--space-4); border-radius: var(--radius-lg); background: color-mix(in oklab, var(--color-primary) 9%, var(--color-surface));
+      border: 1px solid color-mix(in oklab, var(--color-primary) 20%, transparent);
+    }
+    .summary-box strong { display: block; font-size: var(--text-sm); margin-bottom: var(--space-2); }
+    .summary-box p { color: var(--color-text-muted); font-size: var(--text-sm); }
+
+    .guide {
+      border-radius: calc(var(--radius-xl) + 0.25rem); padding: clamp(var(--space-6), 4vw, var(--space-10));
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4);
+    }
+    .guide-card {
+      padding: var(--space-5); border-radius: var(--radius-xl); background: color-mix(in oklab, var(--color-bg) 75%, var(--color-surface));
+      border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
+      content-visibility: auto;
+    }
+    .guide-card h2 { font-size: var(--text-base); font-family: var(--font-display); margin-bottom: var(--space-3); }
+    .guide-card p { color: var(--color-text-muted); font-size: var(--text-sm); }
+
+    .status-dot { width: 0.65rem; height: 0.65rem; border-radius: 50%; background: var(--color-success); box-shadow: 0 0 0 0.3rem color-mix(in oklab, var(--color-success) 20%, transparent); }
+    .footer-note { color: var(--color-text-faint); font-size: var(--text-xs); text-align: center; padding-top: var(--space-2); }
+
+    @media (max-width: 920px) {
+      .hero, .converter, .guide { grid-template-columns: 1fr; }
+      h1 { max-width: 16ch; }
+    }
+    @media (max-width: 640px) {
+      .shell { padding: var(--space-3); }
+      .header { padding-bottom: var(--space-6); }
+      .two-col { grid-template-columns: 1fr; }
+      .actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .hero, .converter, .guide { padding: var(--space-5); gap: var(--space-5); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shell">
+    <header class="header">
+      <a class="brand" href="#top" aria-label="California Australia Time Converter home">
+        <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="8" y="10" width="22" height="44" rx="11" stroke="currentColor" stroke-width="4"></rect>
+          <rect x="34" y="10" width="22" height="44" rx="11" stroke="currentColor" stroke-width="4"></rect>
+          <path d="M24 21H40" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
+          <circle cx="24" cy="32" r="4" fill="currentColor"></circle>
+          <circle cx="40" cy="32" r="4" fill="currentColor"></circle>
+        </svg>
+        <span class="brand-text">
+          <strong>Pacific ↔ Australia</strong>
+          <span>Timezone mini website</span>
+        </span>
+      </a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <span class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Live daylight saving aware</span>
+          <h1 id="hero-title">Convert California time to Australia in seconds.</h1>
+          <p>Pick a California city, choose an Australian timezone, then enter any date and time. The converter handles daylight saving shifts automatically and shows the exact local result on both sides.</p>
+          <div class="hero-meta" aria-label="Key features">
+            <span class="pill">Los Angeles, San Francisco, San Diego</span>
+            <span class="pill">Sydney, Melbourne, Brisbane, Perth, Adelaide, Darwin</span>
+            <span class="pill">12/24-hour friendly</span>
+          </div>
+        </div>
+        <aside class="hero-clock" aria-label="Current time preview">
+          <div class="clock-card">
+            <small>California now</small>
+            <div class="clock-time" id="caNow">--:--</div>
+            <div class="clock-date" id="caDate">Loading current time</div>
+          </div>
+          <div class="clock-card">
+            <small>Australia now</small>
+            <div class="clock-time" id="auNow">--:--</div>
+            <div class="clock-date" id="auDate">Choose a timezone below</div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="converter" aria-labelledby="converter-title">
+        <div>
+          <h2 class="panel-title" id="converter-title">Timezone converter</h2>
+          <p class="panel-intro">Use California as the source and any major Australian timezone as the destination. You can also flip the direction instantly to check the reverse conversion.</p>
+          <form class="form-grid" id="converterForm">
+            <div class="two-col">
+              <div class="field">
+                <label for="fromZone">From</label>
+                <select id="fromZone" class="control" aria-describedby="fromHint">
+                  <option value="America/Los_Angeles">California — Pacific Time</option>
+                  <option value="Australia/Sydney">Australia — Sydney / Melbourne</option>
+                  <option value="Australia/Brisbane">Australia — Brisbane</option>
+                  <option value="Australia/Adelaide">Australia — Adelaide</option>
+                  <option value="Australia/Darwin">Australia — Darwin</option>
+                  <option value="Australia/Perth">Australia — Perth</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="toZone">To</label>
+                <select id="toZone" class="control">
+                  <option value="Australia/Sydney">Australia — Sydney / Melbourne</option>
+                  <option value="Australia/Brisbane">Australia — Brisbane</option>
+                  <option value="Australia/Adelaide">Australia — Adelaide</option>
+                  <option value="Australia/Darwin">Australia — Darwin</option>
+                  <option value="Australia/Perth">Australia — Perth</option>
+                  <option value="America/Los_Angeles">California — Pacific Time</option>
+                </select>
+              </div>
+            </div>
+            <div class="two-col">
+              <div class="field">
+                <label for="dateInput">Date</label>
+                <input id="dateInput" class="control" type="date" required />
+              </div>
+              <div class="field">
+                <label for="timeInput">Time</label>
+                <input id="timeInput" class="control" type="time" required step="60" />
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn btn-primary" type="submit">Convert time</button>
+              <button class="btn btn-secondary" type="button" id="swapBtn">Swap direction</button>
+              <button class="btn btn-secondary" type="button" id="nowBtn">Use current time</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="results" aria-live="polite">
+          <div class="result-card">
+            <small>Converted result</small>
+            <div class="result-primary" id="convertedPrimary">Select a date and time</div>
+            <div class="result-secondary" id="convertedSecondary">Your converted time will appear here.</div>
+          </div>
+          <div class="summary-box">
+            <strong>Difference snapshot</strong>
+            <p id="differenceSummary">Australia is usually between 17 and 19 hours ahead of California, depending on the destination timezone and daylight saving season.</p>
+          </div>
+          <div class="summary-box">
+            <strong>Working-hours hint</strong>
+            <p id="workHint">Great overlap usually happens early morning in California and the following early morning to afternoon in Australia.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="guide" aria-label="Timezone notes">
+        <article class="guide-card">
+          <h2>California</h2>
+          <p>California uses Pacific Time. It switches between PST and PDT depending on daylight saving time, so the Australia offset changes during the year.</p>
+        </article>
+        <article class="guide-card">
+          <h2>Eastern Australia</h2>
+          <p>Sydney and Melbourne usually share the same timezone. Brisbane stays on standard time, which can create a one-hour difference during Australian summer.</p>
+        </article>
+        <article class="guide-card">
+          <h2>Central and west</h2>
+          <p>Adelaide and Darwin are in half-hour based central time zones, while Perth is further west and often the closest Australian match to California business hours.</p>
+        </article>
+      </section>
+
+      <p class="footer-note">Built for quick scheduling across California and Australia.</p>
+    </main>
+  </div>
+
+  <script>
+    const themeToggle = document.querySelector('[data-theme-toggle]');
+    const root = document.documentElement;
+    let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    root.setAttribute('data-theme', theme);
+
+    const themeIcons = {
+      dark: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>',
+      light: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>'
+    };
+    function syncThemeButton() {
+      themeToggle.innerHTML = theme === 'dark' ? themeIcons.light : themeIcons.dark;
+      themeToggle.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+    }
+    syncThemeButton();
+    themeToggle.addEventListener('click', () => {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', theme);
+      syncThemeButton();
+    });
+
+    const zoneLabels = {
+      'America/Los_Angeles': 'California — Pacific Time',
+      'Australia/Sydney': 'Australia — Sydney / Melbourne',
+      'Australia/Brisbane': 'Australia — Brisbane',
+      'Australia/Adelaide': 'Australia — Adelaide',
+      'Australia/Darwin': 'Australia — Darwin',
+      'Australia/Perth': 'Australia — Perth'
+    };
+
+    const form = document.getElementById('converterForm');
+    const fromZone = document.getElementById('fromZone');
+    const toZone = document.getElementById('toZone');
+    const dateInput = document.getElementById('dateInput');
+    const timeInput = document.getElementById('timeInput');
+    const swapBtn = document.getElementById('swapBtn');
+    const nowBtn = document.getElementById('nowBtn');
+
+    const convertedPrimary = document.getElementById('convertedPrimary');
+    const convertedSecondary = document.getElementById('convertedSecondary');
+    const differenceSummary = document.getElementById('differenceSummary');
+    const workHint = document.getElementById('workHint');
+
+    const caNow = document.getElementById('caNow');
+    const caDate = document.getElementById('caDate');
+    const auNow = document.getElementById('auNow');
+    const auDate = document.getElementById('auDate');
+
+    function setInitialDateTime() {
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, '0');
+      dateInput.value = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+      timeInput.value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    }
+
+    function formatDateTimeForZone(date, timeZone, opts = {}) {
+      return new Intl.DateTimeFormat('en-US', {
+        timeZone,
+        weekday: opts.weekday ? 'short' : undefined,
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+        timeZoneName: opts.zoneName ? 'short' : undefined
+      }).format(date);
+    }
+
+    function getLocalParts(date, timeZone) {
+      const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hourCycle: 'h23'
+      }).formatToParts(date);
+      return Object.fromEntries(parts.filter(p => p.type !== 'literal').map(p => [p.type, p.value]));
+    }
+
+    function getOffsetMinutes(date, timeZone) {
+      const zoneDate = new Date(date.toLocaleString('en-US', { timeZone }));
+      return Math.round((zoneDate.getTime() - date.getTime()) / 60000);
+    }
+
+    function zonedTimeToUtc(dateString, timeString, timeZone) {
+      const [year, month, day] = dateString.split('-').map(Number);
+      const [hour, minute] = timeString.split(':').map(Number);
+      const utcGuess = new Date(Date.UTC(year, month - 1, day, hour, minute));
+      const parts = getLocalParts(utcGuess, timeZone);
+      const asUTC = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour, +parts.minute, +parts.second);
+      const desiredUTC = Date.UTC(year, month - 1, day, hour, minute, 0);
+      return new Date(utcGuess.getTime() - (asUTC - desiredUTC));
+    }
+
+    function diffLabel(hours) {
+      const aheadBehind = hours >= 0 ? 'ahead of' : 'behind';
+      const absolute = Math.abs(hours);
+      return `${absolute.toFixed(1).replace('.0', '')} hours ${aheadBehind}`;
+    }
+
+    function buildWorkHint(sourceZone, targetZone, convertedDate) {
+      const sourceHour = Number(getLocalParts(convertedDate, sourceZone).hour);
+      const targetHour = Number(getLocalParts(convertedDate, targetZone).hour);
+      const within = (hour) => hour >= 8 && hour <= 18;
+      if (within(sourceHour) && within(targetHour)) return 'Both sides are inside common business hours right now.';
+      if (within(sourceHour) && !within(targetHour)) return 'The source side is in business hours, but the destination side is outside the usual 8am–6pm window.';
+      if (!within(sourceHour) && within(targetHour)) return 'The destination side is in business hours, but the source side is outside the usual 8am–6pm window.';
+      return 'Neither side is in a typical 8am–6pm work window at that moment.';
+    }
+
+    function updateLiveClocks() {
+      const now = new Date();
+      const activeAustralia = toZone.value.startsWith('Australia/') ? toZone.value : fromZone.value.startsWith('Australia/') ? fromZone.value : 'Australia/Sydney';
+      caNow.textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true }).format(now);
+      caDate.textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', weekday: 'long', month: 'short', day: 'numeric', timeZoneName: 'short' }).format(now);
+      auNow.textContent = new Intl.DateTimeFormat('en-US', { timeZone: activeAustralia, hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true }).format(now);
+      auDate.textContent = `${zoneLabels[activeAustralia]} · ${new Intl.DateTimeFormat('en-US', { timeZone: activeAustralia, weekday: 'long', month: 'short', day: 'numeric', timeZoneName: 'short' }).format(now)}`;
+    }
+
+    function convertAndRender() {
+      if (!dateInput.value || !timeInput.value) return;
+      const sourceZone = fromZone.value;
+      const targetZone = toZone.value;
+      const sourceDate = zonedTimeToUtc(dateInput.value, timeInput.value, sourceZone);
+      const targetText = formatDateTimeForZone(sourceDate, targetZone, { zoneName: true, weekday: true });
+      const sourceText = formatDateTimeForZone(sourceDate, sourceZone, { zoneName: true, weekday: true });
+
+      convertedPrimary.textContent = targetText;
+      convertedSecondary.textContent = `${zoneLabels[sourceZone]} ${sourceText} → ${zoneLabels[targetZone]}`;
+
+      const sourceOffset = getOffsetMinutes(sourceDate, sourceZone) / 60;
+      const targetOffset = getOffsetMinutes(sourceDate, targetZone) / 60;
+      const diff = targetOffset - sourceOffset;
+      differenceSummary.textContent = `${zoneLabels[targetZone]} is ${diffLabel(diff)} ${zoneLabels[sourceZone]} at this moment.`;
+      workHint.textContent = buildWorkHint(sourceZone, targetZone, sourceDate);
+      updateLiveClocks();
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      convertAndRender();
+    });
+
+    swapBtn.addEventListener('click', () => {
+      const currentFrom = fromZone.value;
+      fromZone.value = toZone.value;
+      toZone.value = currentFrom;
+      convertAndRender();
+    });
+
+    nowBtn.addEventListener('click', () => {
+      const now = new Date();
+      const currentZone = fromZone.value;
+      const parts = getLocalParts(now, currentZone);
+      dateInput.value = `${parts.year}-${parts.month}-${parts.day}`;
+      timeInput.value = `${parts.hour}:${parts.minute}`;
+      convertAndRender();
+    });
+
+    fromZone.addEventListener('change', () => {
+      if (fromZone.value === toZone.value) {
+        const alternative = Object.keys(zoneLabels).find(zone => zone !== fromZone.value);
+        toZone.value = alternative || 'Australia/Sydney';
+      }
+      updateLiveClocks();
+      convertAndRender();
+    });
+
+    toZone.addEventListener('change', () => {
+      if (fromZone.value === toZone.value) {
+        const alternative = Object.keys(zoneLabels).find(zone => zone !== toZone.value);
+        fromZone.value = alternative || 'America/Los_Angeles';
+      }
+      updateLiveClocks();
+      convertAndRender();
+    });
+
+    setInitialDateTime();
+    updateLiveClocks();
+    convertAndRender();
+    setInterval(updateLiveClocks, 1000);
+  </script>
+</body>
+</html>
