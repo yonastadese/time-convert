@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Request | HISOPE</title>
+  <meta name="description" content="Share the details of your upcoming event so HISOPE can begin crafting your custom proposal.">
+  <meta name="theme-color" content="#100d0b">
+  <meta property="og:title" content="Event Request | HISOPE">
+  <meta property="og:description" content="Share the details of your upcoming event so HISOPE can begin crafting your custom proposal.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/rooftop-gala.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..500,0..100;1,9..144,300..500,0..100&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/addis-ababa-au.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.className = 'js';</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="preloader" aria-hidden="true"><div><div class="preloader__mark">HISOPE</div><div class="preloader__bar"></div></div></div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="page-hero__bg" data-parallax="-60" style="background-image:url('images/addis-ababa-au.jpg')"></div>
+      <div class="wrap page-hero__content">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Event Request</span></nav>
+        <h1 class="display h1">Event <em>request</em></h1>
+        <p class="lead">Provide the details of your upcoming event so we can begin crafting your custom proposal.</p>
+      </div>
+    </section>
+    <div class="tilet" aria-hidden="true"></div>
+
+    <section class="section section--ivory">
+      <div class="wrap" style="max-width:860px">
+        <form class="form reveal" id="request-form" novalidate>
+          <div class="form__body">
+            <ol class="stepper" aria-label="Progress">
+              <li><b>01</b>About you</li><li><b>02</b>The event</li><li><b>03</b>Your vision</li><li><b>04</b>Review</li>
+            </ol>
+
+            <div class="fstep">
+              <h2>First, who should we reply to?</h2>
+              <div class="form__grid">
+                <div class="field"><label for="f-name">Full name <i aria-hidden="true">*</i></label><input id="f-name" name="name" type="text" required autocomplete="name" aria-describedby="e-name"><span class="field__err" id="e-name" role="alert"></span></div>
+                <div class="field"><label for="f-email">Email address <i aria-hidden="true">*</i></label><input id="f-email" name="email" type="email" required autocomplete="email" aria-describedby="e-email"><span class="field__err" id="e-email" role="alert"></span></div>
+                <div class="field"><label for="f-company">Company / organization</label><input id="f-company" name="company" type="text" autocomplete="organization" aria-describedby="e-company"><span class="field__err" id="e-company" role="alert"></span></div>
+                <div class="field"><label for="f-phone">Phone number <i aria-hidden="true">*</i></label><input id="f-phone" name="phone" type="tel" required autocomplete="tel" aria-describedby="e-phone"><span class="field__err" id="e-phone" role="alert"></span></div>
+              </div>
+              <div class="form__actions"><span></span><button class="btn btn--dark" type="button" data-next>Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button></div>
+            </div>
+
+            <div class="fstep">
+              <h2>What kind of event is it?</h2>
+              <fieldset class="field"><legend>Event type</legend><div class="choices"><label class="choice"><input type="radio" name="type" value="Corporate Experience" checked><span><b>Corporate Experience</b><small>Transcending standard corporate events.</small></span></label><label class="choice"><input type="radio" name="type" value="Public Experience"><span><b>Public Experience</b><small>From music festivals to cultural exhibitions.</small></span></label><label class="choice"><input type="radio" name="type" value="Private Celebration"><span><b>Private Celebration</b><small>Luxury weddings, exclusive parties, and intimate milestones.</small></span></label><label class="choice"><input type="radio" name="type" value="Creative Production"><span><b>Creative Production</b><small>Immersive installations, brand activations, and artistic performances.</small></span></label></div></fieldset>
+              <div class="form__grid" style="margin-top:1.6rem">
+                <div class="field"><label for="f-date">Estimated date <i aria-hidden="true">*</i></label><input id="f-date" name="date" type="date" required aria-describedby="e-date"><span class="field__err" id="e-date" role="alert"></span></div>
+                <div class="field"><label for="f-guests">Estimated guest count <i aria-hidden="true">*</i></label><input id="f-guests" name="guests" type="number" required aria-describedby="e-guests" min="1" inputmode="numeric"><span class="field__err" id="e-guests" role="alert"></span></div>
+                <div class="field field--full"><label for="f-location">Preferred location / city <i aria-hidden="true">*</i></label><input id="f-location" name="location" type="text" required aria-describedby="e-location" placeholder="e.g. Addis Ababa"><span class="field__err" id="e-location" role="alert"></span></div>
+              </div>
+              <div class="form__actions"><button class="btn btn--line-dark" type="button" data-back>Back</button><button class="btn btn--dark" type="button" data-next>Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button></div>
+            </div>
+
+            <div class="fstep">
+              <h2>Tell us about the vision.</h2>
+              <div class="form__grid">
+                <div class="field field--full"><label for="f-details">Event details &amp; vision <i aria-hidden="true">*</i></label><textarea id="f-details" name="details" required aria-describedby="e-details"></textarea><span class="field__err" id="e-details" role="alert"></span></div>
+              </div>
+              <div class="form__actions"><button class="btn btn--line-dark" type="button" data-back>Back</button><button class="btn btn--dark" type="button" data-next>Review request <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button></div>
+            </div>
+
+            <div class="fstep">
+              <h2>Check the details, then submit.</h2>
+              <dl class="review"></dl>
+              <div class="form__actions"><button class="btn btn--line-dark" type="button" data-back>Edit</button><button class="btn btn--dark" type="submit">Submit Request <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button></div>
+              <p class="form__note" style="margin-top:1rem">Submitting opens your email app with this request addressed to hello@hisope.com.</p>
+            </div>
+          </div>
+          <div class="sent" role="status">
+              <div class="sent__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+              <h2>Almost there.</h2>
+              <p>Your email app should now be open with your request addressed to us. Press send there to deliver it. If nothing opened, write to us directly at <a href="mailto:hello@hisope.com" style="border-bottom:1px solid">hello@hisope.com</a>.</p>
+              <a class="btn btn--line-dark" href="index.html">Back to home</a>
+            </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer" data-no-cta></div>
+  <noscript><p style="padding:2rem;text-align:center">HISOPE &middot; <a href="mailto:hello@hisope.com">hello@hisope.com</a> &middot; Addis Ababa, Ethiopia</p></noscript>
+  <script src="js/main.js"></script>
+</body>
+</html>
