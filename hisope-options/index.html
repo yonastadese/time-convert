@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HISOPE | Choose a design</title>
+  <meta name="description" content="Three complete redesigns of the HISOPE website. Compare them side by side and choose one.">
+  <meta name="theme-color" content="#111110">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111110'/%3E%3Ccircle cx='8' cy='16' r='4.5' fill='%23d9a441'/%3E%3Ccircle cx='16' cy='16' r='4.5' fill='%23f5f1e8'/%3E%3Ccircle cx='24' cy='16' r='4.5' fill='%231f3fff'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #111110;
+      --panel: #1a1a18;
+      --panel-2: #222220;
+      --text: #f5f1e8;
+      --muted: #a9a59b;
+      --line: rgba(245, 241, 232, 0.14);
+      --accent: #f5f1e8;
+      --a: #d9a441;
+      --b: #f5b921;
+      --c: #3c5bff;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --wrap: 1280px;
+      --gutter: clamp(1rem, 4vw, 2.75rem);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 1.0625rem/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, select { font: inherit; color: inherit; }
+    button { background: none; border: 0; padding: 0; cursor: pointer; }
+    h1, h2, h3, p, ul, dl, dd { margin: 0; }
+    ul { padding: 0; list-style: none; }
+    :focus-visible { outline: 3px solid #fff; outline-offset: 3px; border-radius: 6px; }
+    ::selection { background: var(--text); color: var(--bg); }
+    .wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
+    .skip { position: absolute; left: -9999px; top: 0; background: var(--text); color: var(--bg); padding: 0.7rem 1rem; z-index: 50; border-radius: 8px; }
+    .skip:focus { left: 1rem; top: 1rem; }
+    .mono { font: 500 0.75rem/1.2 ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* ---------- Intro ---------- */
+    .top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.4rem; }
+    .brand { display: inline-flex; align-items: center; gap: 0.7rem; font-weight: 700; letter-spacing: 0.22em; }
+    .brand i { width: 12px; height: 12px; border-radius: 50%; background: var(--a); box-shadow: 14px 0 0 var(--text), 28px 0 0 var(--c); margin-right: 30px; }
+    .top a.mono { color: var(--muted); transition: color 0.2s; }
+    .top a.mono:hover { color: var(--text); }
+    .intro { padding-block: clamp(2rem, 6vw, 5rem) clamp(2.2rem, 5vw, 4rem); display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem clamp(2rem, 6vw, 6rem); align-items: end; }
+    .intro h1 { font-size: clamp(2.6rem, 7.4vw, 6.6rem); line-height: 0.95; letter-spacing: -0.04em; font-weight: 600; text-wrap: balance; }
+    .intro h1 span { color: var(--muted); }
+    .intro p { color: var(--muted); max-width: 42ch; font-size: 1.1rem; }
+    .intro p b { color: var(--text); font-weight: 600; }
+
+    /* ---------- Cards ---------- */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; padding-bottom: clamp(3rem, 7vw, 6rem); }
+    .card { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; transition: transform 0.5s var(--ease), border-color 0.3s; min-width: 0; }
+    .card:hover { transform: translateY(-5px); border-color: rgba(245, 241, 232, 0.35); }
+    .shot { position: relative; display: block; background: #000; aspect-ratio: 16 / 10; overflow: hidden; }
+    .shot > img:first-child { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 1.2s var(--ease); }
+    .card:hover .shot > img:first-child { transform: scale(1.04); }
+    .shot .phone { position: absolute; right: 1rem; bottom: -3rem; width: 24%; border-radius: 14px; border: 4px solid #0b0b0a; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55); transition: transform 0.6s var(--ease); }
+    .card:hover .phone { transform: translateY(-1.2rem); }
+    .tag { position: absolute; left: 0.9rem; top: 0.9rem; padding: 0.4rem 0.75rem; border-radius: 999px; background: rgba(17, 17, 16, 0.82); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .card__body { padding: 1.5rem 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 1.2rem; flex: 1; }
+    .card h2 { font-size: clamp(1.6rem, 2.4vw, 2.1rem); line-height: 1; letter-spacing: -0.03em; font-weight: 600; }
+    .card__sub { color: var(--muted); margin-top: 0.5rem; }
+    .swatches { display: flex; gap: 0.4rem; }
+    .swatches i { width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.25); }
+    .specs { display: grid; border-top: 1px solid var(--line); }
+    .specs div { display: grid; grid-template-columns: 5.4rem 1fr; gap: 0.8rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
+    .specs dt { color: var(--muted); padding-top: 0.1rem; }
+    .specs dd { margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: auto; padding-top: 0.4rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 50px; padding: 0.6rem 1.3rem; border-radius: 999px; border: 1.5px solid var(--text); font-weight: 600; font-size: 0.98rem; transition: background 0.25s, color 0.25s, transform 0.25s var(--ease); }
+    .btn svg { width: 17px; height: 17px; transition: transform 0.3s var(--ease); }
+    .btn--solid { background: var(--text); color: var(--bg); }
+    .btn--solid:hover { background: #fff; }
+    .btn--solid:hover svg { transform: translate(3px, -3px); }
+    .btn--ghost:hover { background: var(--text); color: var(--bg); }
+
+    /* ---------- Viewer ---------- */
+    .viewer { border-top: 1px solid var(--line); padding-block: clamp(2.5rem, 6vw, 5rem) clamp(3rem, 7vw, 6rem); background: var(--panel); }
+    .viewer h2 { font-size: clamp(2rem, 4.6vw, 3.8rem); letter-spacing: -0.04em; line-height: 1; font-weight: 600; }
+    .viewer__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem 2rem; margin-bottom: 1.8rem; }
+    .viewer__head p { color: var(--muted); max-width: 46ch; }
+    .bar { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; align-items: center; margin-bottom: 1rem; }
+    .seg { display: inline-flex; padding: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; }
+    .seg button { min-height: 42px; padding: 0.3rem 1.1rem; border-radius: 999px; font-weight: 600; font-size: 0.95rem; color: var(--muted); transition: background 0.25s, color 0.25s; white-space: nowrap; }
+    .seg button:hover { color: var(--text); }
+    .seg button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+    .seg button small { opacity: 0.65; font-weight: 500; margin-left: 0.2rem; }
+    .field { display: inline-flex; align-items: center; gap: 0.6rem; }
+    .field label { color: var(--muted); font-size: 0.9rem; }
+    .field select { min-height: 50px; padding: 0.4rem 2.2rem 0.4rem 1rem; background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23f5f1e8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 0.9rem center; border: 1px solid var(--line); border-radius: 999px; appearance: none; -webkit-appearance: none; cursor: pointer; }
+    .field select option { background: #1a1a18; color: var(--text); }
+    .bar__open { margin-left: auto; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; border-bottom: 1.5px solid currentColor; padding-bottom: 0.2rem; }
+    .bar__open svg { width: 16px; height: 16px; }
+    .bar__open:hover { color: #fff; }
+    .stage { position: relative; background: #000; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; display: flex; justify-content: center; align-items: flex-start; }
+    .stage--phone { background: radial-gradient(circle at 50% 0, #2a2a27, #121211 70%); padding-block: 1.5rem; }
+    .stage__box { position: relative; flex: none; overflow: hidden; background: #fff; }
+    .stage--phone .stage__box { border-radius: 30px; border: 9px solid #050505; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18), 0 30px 60px rgba(0, 0, 0, 0.5); }
+    .stage iframe { position: absolute; left: 0; top: 0; border: 0; background: #fff; transform-origin: 0 0; }
+    .stage__load { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); pointer-events: none; transition: opacity 0.3s; }
+    .stage.ready .stage__load { opacity: 0; }
+    .keys { margin-top: 1rem; color: var(--muted); font-size: 0.9rem; }
+    .keys kbd { font: 500 0.78rem ui-monospace, Menlo, monospace; padding: 0.15rem 0.45rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+
+    /* ---------- Notes + footer ---------- */
+    .notes { padding-block: clamp(2.5rem, 5vw, 4rem); display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem 2rem; border-top: 1px solid var(--line); }
+    .notes h3 { font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600; }
+    .notes p { color: var(--muted); font-size: 0.97rem; }
+    .foot { border-top: 1px solid var(--line); padding-block: 1.4rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem; color: var(--muted); font-size: 0.9rem; }
+
+    @media (max-width: 1080px) {
+      .cards { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; }
+      .intro { grid-template-columns: 1fr; }
+      .notes { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      body { font-size: 1rem; }
+      .bar__open { margin-left: 0; }
+      .seg { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+      .seg button { padding-inline: 0.8rem; }
+      .field { width: 100%; }
+      .field select { flex: 1; }
+      .keys { display: none; }
+      .specs div { grid-template-columns: 1fr; gap: 0.1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#viewer">Skip to the live viewer</a>
+
+  <header class="wrap top">
+    <span class="brand">HISOPE</span>
+    <a class="mono" href="#viewer">Live viewer &darr;</a>
+  </header>
+
+  <main>
+    <section class="wrap intro">
+      <h1>Three designs. <span>One to choose.</span></h1>
+      <p>Each option is a complete website with the same content and the same <b>eight pages</b>. What changes is the header, the footer and the layout of every page. Open one, or compare them in the viewer below.</p>
+    </section>
+
+    <section class="wrap cards" aria-label="Design options">
+      <article class="card" id="card-a">
+        <a class="shot" href="../hisope/" aria-label="Open Option A">
+          <img src="previews/a-desktop.jpg" alt="Option A home page on a desktop screen: a full-screen photo of Addis Ababa at dusk behind a large serif headline" width="1440" height="900">
+          <img class="phone" src="previews/a-phone.jpg" alt="Option A home page on a phone" width="390" height="844" loading="lazy">
+          <span class="tag mono">Option A</span>
+        </a>
+        <div class="card__body">
+          <div>
+            <h2>Gold Hour</h2>
+            <p class="card__sub">Dark, cinematic and luxurious. Full-bleed photography with elegant serif type.</p>
+          </div>
+          <div class="swatches" aria-label="Colour palette"><i style="background:#100d0b"></i><i style="background:#d9a441"></i><i style="background:#c2492b"></i><i style="background:#f5efe4"></i></div>
+          <dl class="specs">
+            <div><dt>Header</dt><dd>Slim bar across the top, turning solid as you scroll</dd></div>
+            <div><dt>Footer</dt><dd>Link columns beneath a giant outlined wordmark</dd></div>
+            <div><dt>Layouts</dt><dd>Hero slideshow, expanding list, draggable service cards</dd></div>
+            <div><dt>Type</dt><dd>Fraunces and Manrope</dd></div>
+          </dl>
+          <div class="actions">
+            <a class="btn btn--solid" href="../hisope/">Open site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <button class="btn btn--ghost" type="button" data-pick="a">Compare below</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" id="card-b">
+        <a class="shot" href="../hisope-v2/" aria-label="Open Option B">
+          <img src="previews/b-desktop.jpg" alt="Option B home page on a desktop screen: a cream page with a huge bold headline and photos set inside the words" width="1440" height="900" loading="lazy">
+          <img class="phone" src="previews/b-phone.jpg" alt="Option B home page on a phone" width="390" height="844" loading="lazy">
+          <span class="tag mono">Option B</span>
+        </a>
+        <div class="card__body">
+          <div>
+            <h2>Sunlit</h2>
+            <p class="card__sub">Light, bold and editorial. Arch-shaped photos and playful colour blocks.</p>
+          </div>
+          <div class="swatches" aria-label="Colour palette"><i style="background:#faf5ea"></i><i style="background:#0f4a37"></i><i style="background:#f5b921"></i><i style="background:#d9432a"></i></div>
+          <dl class="specs">
+            <div><dt>Header</dt><dd>Floating rounded pill that hides when you scroll down</dd></div>
+            <div><dt>Footer</dt><dd>Yellow call-to-action over a deep green footer</dd></div>
+            <div><dt>Layouts</dt><dd>Bento tiles, stacking service cards, tilted testimonials</dd></div>
+            <div><dt>Type</dt><dd>Bricolage Grotesque, Instrument Serif and Sans</dd></div>
+          </dl>
+          <div class="actions">
+            <a class="btn btn--solid" href="../hisope-v2/">Open site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <button class="btn btn--ghost" type="button" data-pick="b">Compare below</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" id="card-c">
+        <a class="shot" href="../hisope-v3/" aria-label="Open Option C">
+          <img src="previews/c-desktop.jpg" alt="Option C home page on a desktop screen: a fixed side navigation, a bold uppercase headline and an image slider" width="1440" height="900" loading="lazy">
+          <img class="phone" src="previews/c-phone.jpg" alt="Option C home page on a phone" width="390" height="844" loading="lazy">
+          <span class="tag mono">Option C</span>
+        </a>
+        <div class="card__body">
+          <div>
+            <h2>Blue Nile</h2>
+            <p class="card__sub">A precise, Swiss-style catalogue. Hairline grids and a single blue accent.</p>
+          </div>
+          <div class="swatches" aria-label="Colour palette"><i style="background:#f3f0ea"></i><i style="background:#0d0f14"></i><i style="background:#1f3fff"></i></div>
+          <dl class="specs">
+            <div><dt>Header</dt><dd>Fixed side panel with live Addis Ababa time</dd></div>
+            <div><dt>Footer</dt><dd>Full-width email band over a ruled four-column grid</dd></div>
+            <div><dt>Layouts</dt><dd>Tabs, ruled grids, index-style portfolio, live request summary</dd></div>
+            <div><dt>Type</dt><dd>Archivo, Inter Tight and JetBrains Mono</dd></div>
+          </dl>
+          <div class="actions">
+            <a class="btn btn--solid" href="../hisope-v3/">Open site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <button class="btn btn--ghost" type="button" data-pick="c">Compare below</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="viewer" id="viewer" aria-labelledby="viewer-title">
+      <div class="wrap">
+        <div class="viewer__head">
+          <h2 id="viewer-title">Compare live</h2>
+          <p>Switch design, page and screen size. Everything in the frame is the real, working site: scroll it, click through it, open the menu.</p>
+        </div>
+        <div class="bar">
+          <div class="seg" role="group" aria-label="Design">
+            <button type="button" data-opt="a" aria-pressed="true">A <small>Gold Hour</small></button>
+            <button type="button" data-opt="b" aria-pressed="false">B <small>Sunlit</small></button>
+            <button type="button" data-opt="c" aria-pressed="false">C <small>Blue Nile</small></button>
+          </div>
+          <div class="field">
+            <label for="page">Page</label>
+            <select id="page">
+              <option value="index.html">Home</option>
+              <option value="about.html">About</option>
+              <option value="services.html">Services</option>
+              <option value="portfolio.html">Portfolio</option>
+              <option value="gallery.html">Gallery</option>
+              <option value="testimonials.html">Testimonials</option>
+              <option value="contact.html">Contact</option>
+              <option value="event-request.html">Event Request</option>
+            </select>
+          </div>
+          <div class="seg" role="group" aria-label="Screen size">
+            <button type="button" data-dev="desktop" aria-pressed="true">Desktop</button>
+            <button type="button" data-dev="phone" aria-pressed="false">Phone</button>
+          </div>
+          <a class="bar__open" id="open" href="../hisope/index.html" target="_blank" rel="noopener">Open full screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+        <div class="stage" id="stage">
+          <div class="stage__box" id="box">
+            <iframe id="frame" title="Live preview of the selected design"></iframe>
+          </div>
+          <div class="stage__load mono" aria-hidden="true">Loading preview&hellip;</div>
+        </div>
+        <p class="keys">Shortcuts: <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> switch design &middot; <kbd>P</kbd> toggles phone and desktop</p>
+      </div>
+    </section>
+
+    <section class="wrap notes">
+      <div><h3>Same content everywhere</h3><p>Every design uses the text and photos from the current HISOPE site, so you are comparing design only.</p></div>
+      <div><h3>Fully responsive</h3><p>Each option adapts from large desktop screens to phones. Use the Phone button to see it.</p></div>
+      <div><h3>Forms</h3><p>The contact and event-request forms open the visitor&rsquo;s email app addressed to hello@hisope.com. Nothing is sent to a server.</p></div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>HISOPE &middot; Feel Alive.</span>
+    <span>Design options &middot; Addis Ababa, Ethiopia</span>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+      var SITES = { a: '../hisope/', b: '../hisope-v2/', c: '../hisope-v3/' };
+      var NAMES = { a: 'Gold Hour', b: 'Sunlit', c: 'Blue Nile' };
+      var DESK = { w: 1440, h: 900 }, PHONE = { w: 390, h: 844 };
+      var $ = function (s, r) { return (r || document).querySelector(s); };
+      var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+      var state = { opt: 'a', page: 'index.html', dev: 'desktop' };
+      var stage = $('#stage'), box = $('#box'), frame = $('#frame'), page = $('#page'), open = $('#open');
+
+      function readHash() {
+        if (innerWidth < 700) state.dev = 'phone';   /* a desktop-size frame is unreadable on a phone */
+        try {
+          var h = new URLSearchParams(location.hash.slice(1));
+          if (SITES[h.get('opt')]) state.opt = h.get('opt');
+          if ($('#page option[value="' + h.get('page') + '"]')) state.page = h.get('page');
+          if (h.get('dev') === 'phone' || h.get('dev') === 'desktop') state.dev = h.get('dev');
+        } catch (e) {}
+      }
+      function writeHash() {
+        try { history.replaceState(null, '', '#opt=' + state.opt + '&page=' + state.page + '&dev=' + state.dev); } catch (e) {}
+      }
+
+      function layout() {
+        var d = state.dev === 'phone' ? PHONE : DESK;
+        var pad = state.dev === 'phone' ? 18 : 0;               /* the phone bezel */
+        var avail = stage.clientWidth - (state.dev === 'phone' ? 24 : 0);
+        var s = Math.min(1, (avail - pad) / d.w);
+        var w = Math.round(d.w * s), h = Math.round(d.h * s);
+        stage.classList.toggle('stage--phone', state.dev === 'phone');
+        box.style.width = (w + pad) + 'px';
+        box.style.height = (h + pad) + 'px';
+        frame.style.width = d.w + 'px';
+        frame.style.height = d.h + 'px';
+        frame.style.transform = 'scale(' + s + ')';
+      }
+
+      function load() {
+        var url = SITES[state.opt] + state.page;
+        open.href = url;
+        if (frame.getAttribute('data-url') !== url) {
+          stage.classList.remove('ready');
+          frame.setAttribute('data-url', url);
+          frame.src = url;
+        }
+      }
+      frame.addEventListener('load', function () { stage.classList.add('ready'); });
+
+      function sync(scroll) {
+        $$('[data-opt]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.opt === state.opt)); });
+        $$('[data-dev]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.dev === state.dev)); });
+        page.value = state.page;
+        frame.title = 'Live preview of Option ' + state.opt.toUpperCase() + ' (' + NAMES[state.opt] + '), ' + page.options[page.selectedIndex].text + ' page, ' + state.dev + ' size';
+        layout(); load(); writeHash();
+        if (scroll) $('#viewer').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      }
+
+      $$('[data-opt]').forEach(function (b) { b.addEventListener('click', function () { state.opt = b.dataset.opt; sync(); }); });
+      $$('[data-dev]').forEach(function (b) { b.addEventListener('click', function () { state.dev = b.dataset.dev; sync(); }); });
+      $$('[data-pick]').forEach(function (b) { b.addEventListener('click', function () { state.opt = b.dataset.pick; sync(true); }); });
+      page.addEventListener('change', function () { state.page = page.value; sync(); });
+      addEventListener('resize', layout);
+      addEventListener('keydown', function (e) {
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        var t = e.target && e.target.tagName;
+        if (t === 'SELECT' || t === 'INPUT' || t === 'TEXTAREA') return;
+        if (e.key === '1') { state.opt = 'a'; sync(); }
+        else if (e.key === '2') { state.opt = 'b'; sync(); }
+        else if (e.key === '3') { state.opt = 'c'; sync(); }
+        else if (e.key === 'p' || e.key === 'P') { state.dev = state.dev === 'phone' ? 'desktop' : 'phone'; sync(); }
+      });
+
+      readHash();
+      layout();
+      /* Load the viewer once it is near the screen, so the cards appear first. */
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { io.disconnect(); sync(); } }, { rootMargin: '600px 0px' });
+        io.observe($('#viewer'));
+        page.value = state.page;
+      } else { sync(); }
+    })();
+  </script>
+</body>
+</html>
