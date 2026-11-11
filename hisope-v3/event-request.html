@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Request | HISOPE</title>
+  <meta name="description" content="Share the details of your upcoming event so HISOPE can begin crafting your custom proposal.">
+  <meta name="theme-color" content="#f3f0ea">
+  <meta property="og:title" content="Event Request | HISOPE">
+  <meta property="og:description" content="Share the details of your upcoming event so HISOPE can begin crafting your custom proposal.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/rooftop-gala.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.className = 'js';</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <main id="main">
+    <section class="phead">
+      <div class="phead__meta mono"><span><a href="index.html">Home</a> / Event Request</span><span>( 08 )</span></div>
+      <div class="phead__row">
+        <h1 class="display h1">Event <em>request</em></h1>
+        <p class="lead">Provide the details of your upcoming event so we can begin crafting your custom proposal.</p>
+      </div>
+    </section>
+    <div class="pimg"><img src="images/addis-ababa-au.jpg" alt="Conference centre in Addis Ababa" data-parallax="50"></div>
+
+    <section class="sec sec--flush fwrap fwrap--req">
+      <form id="request-form" novalidate>
+        <div class="form__body">
+          <div class="fsec">
+            <div class="fsec__head"><span class="mono">( 01 )</span><h2 class="display h3">About you</h2></div>
+            <div class="form__grid">
+              <div class="field"><label for="f-name">Full name <i aria-hidden="true">*</i></label><input id="f-name" name="name" type="text" required autocomplete="name" aria-describedby="e-name"><span class="field__err" id="e-name" role="alert"></span></div>
+              <div class="field"><label for="f-email">Email address <i aria-hidden="true">*</i></label><input id="f-email" name="email" type="email" required autocomplete="email" aria-describedby="e-email"><span class="field__err" id="e-email" role="alert"></span></div>
+              <div class="field"><label for="f-company">Company / organization</label><input id="f-company" name="company" type="text" autocomplete="organization" aria-describedby="e-company"><span class="field__err" id="e-company" role="alert"></span></div>
+              <div class="field"><label for="f-phone">Phone number <i aria-hidden="true">*</i></label><input id="f-phone" name="phone" type="tel" required autocomplete="tel" aria-describedby="e-phone"><span class="field__err" id="e-phone" role="alert"></span></div>
+            </div>
+          </div>
+          <div class="fsec">
+            <div class="fsec__head"><span class="mono">( 02 )</span><h2 class="display h3">The event</h2></div>
+            <fieldset class="field"><legend>Event type</legend><div class="choices"><label class="choice"><input type="radio" name="type" value="Corporate Experience" checked><span><b>Corporate Experience</b><small>Transcending standard corporate events.</small></span></label><label class="choice"><input type="radio" name="type" value="Public Experience"><span><b>Public Experience</b><small>From music festivals to cultural exhibitions.</small></span></label><label class="choice"><input type="radio" name="type" value="Private Celebration"><span><b>Private Celebration</b><small>Luxury weddings, exclusive parties, and intimate milestones.</small></span></label><label class="choice"><input type="radio" name="type" value="Creative Production"><span><b>Creative Production</b><small>Immersive installations, brand activations, and artistic performances.</small></span></label></div></fieldset>
+            <div class="form__grid" style="margin-top:1.8rem">
+              <div class="field"><label for="f-date">Estimated date <i aria-hidden="true">*</i></label><input id="f-date" name="date" type="date" required aria-describedby="e-date"><span class="field__err" id="e-date" role="alert"></span></div>
+              <div class="field"><label for="f-guests">Estimated guest count <i aria-hidden="true">*</i></label><input id="f-guests" name="guests" type="number" required aria-describedby="e-guests" min="1" inputmode="numeric"><span class="field__err" id="e-guests" role="alert"></span></div>
+              <div class="field field--full"><label for="f-location">Preferred location / city <i aria-hidden="true">*</i></label><input id="f-location" name="location" type="text" required aria-describedby="e-location" placeholder="e.g. Addis Ababa"><span class="field__err" id="e-location" role="alert"></span></div>
+            </div>
+          </div>
+          <div>
+            <div class="fsec__head"><span class="mono">( 03 )</span><h2 class="display h3">Your vision</h2></div>
+            <div class="form__grid">
+              <div class="field field--full"><label for="f-details">Event details &amp; vision <i aria-hidden="true">*</i></label><textarea id="f-details" name="details" required aria-describedby="e-details"></textarea><span class="field__err" id="e-details" role="alert"></span></div>
+            </div>
+          </div>
+          <div class="form__actions">
+            <p class="form__note">Submitting opens your email app with this request addressed to hello@hisope.com.</p>
+            <button class="btn btn--blue" type="submit">Submit Request <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="sent" role="status">
+            <div class="sent__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+            <h2>Almost there.</h2>
+            <p>Your email app should now be open with your request addressed to us. Press send there to deliver it. If nothing opened, write to us directly at <a href="mailto:hello@hisope.com">hello@hisope.com</a>.</p>
+            <a class="btn btn--line" href="index.html">Back to home <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+          </div>
+      </form>
+      <aside class="summary" aria-label="Your request so far">
+        <span class="mono" style="color:var(--blue)">( Your request )</span>
+        <div class="summary__bar" aria-hidden="true"><i></i></div>
+        <p class="mono mute" style="margin-top:.6rem" data-sum-count aria-live="polite"></p>
+        <dl>
+          <div><dt class="mono">Full name</dt><dd data-sum="name" class="empty">Not yet filled in</dd></div>
+          <div><dt class="mono">Email</dt><dd data-sum="email" class="empty">Not yet filled in</dd></div>
+          <div><dt class="mono">Company</dt><dd data-sum="company" class="empty">Not yet filled in</dd></div>
+          <div><dt class="mono">Phone</dt><dd data-sum="phone" class="empty">Not yet filled in</dd></div>
+          <div><dt class="mono">Event type</dt><dd data-sum="type" class="empty">Not yet filled in</dd></div>
+          <div><dt class="mono">Date</dt><dd data-sum="date" class="empty">Not yet filled in</dd></div>
+          <div><dt class="mono">Guests</dt><dd data-sum="guests" class="empty">Not yet filled in</dd></div>
+          <div><dt class="mono">Location</dt><dd data-sum="location" class="empty">Not yet filled in</dd></div>
+          <div><dt class="mono">Vision</dt><dd data-sum="details" class="empty">Not yet filled in</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+  </main>
+
+  <div id="site-footer" data-no-cta></div>
+  <noscript><p style="padding:2rem">HISOPE &middot; <a href="mailto:hello@hisope.com">hello@hisope.com</a> &middot; Addis Ababa, Ethiopia &middot; <a href="index.html">Home</a> <a href="about.html">About</a> <a href="services.html">Services</a> <a href="portfolio.html">Portfolio</a> <a href="gallery.html">Gallery</a> <a href="contact.html">Contact</a></p></noscript>
+  <script src="js/main.js"></script>
+</body>
+</html>
