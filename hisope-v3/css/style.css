@@ -132,7 +132,7 @@ ul, ol { padding: 0; list-style: none; }
 .hero3 { display: grid; grid-template-columns: 1.08fr 0.92fr; min-height: 100svh; }
 .hero3__text { display: flex; flex-direction: column; justify-content: space-between; gap: 3rem; padding: clamp(1.5rem, 3vw, 2.5rem) var(--pad) clamp(1.8rem, 3vw, 2.8rem); border-right: 1px solid var(--line); }
 .hero3__top { display: flex; justify-content: space-between; gap: 1rem; }
-.hero3__title { font-size: clamp(1.7rem, 8cqw, 6.4rem); }
+.hero3__title { font-size: clamp(1.4rem, 8cqw, 6.4rem); }
 .hero3__title span { display: block; overflow: hidden; }
 .hero3__title span > i { display: block; font-style: normal; transform: translateY(102%); animation: up 0.9s var(--ease) forwards; }
 .hero3__title span:nth-child(2) > i { animation-delay: 0.08s; }
